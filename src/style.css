@@ -10,7 +10,7 @@ html, body {
 
 div {
     /* text-align: center;     */
-    border: 1px solid red;
+    border: 1px solid rgb(64, 0, 0);
     flex: 1;
 }
 
@@ -18,26 +18,37 @@ div {
     display: flex;
     flex-direction: column;
     height: 100%;
+    /* flex: 1; */
 }
 
 .logo {
     height: 85px;
     width: 80px;
+    
 }
 
 .location-input {
     width: 48;
     height: 48;
+    font-size: large;
 }
 
 .div1 {
-    
+    text-align: center;
+    flex: 1;
 }
 
 .div2 {
-
+    text-align: center;
+    flex: 1;
 }
 
 .div3{
-    
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+}
+
+.current-day {
+    flex: 3;
 }
