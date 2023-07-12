@@ -32,9 +32,9 @@ h1{
 }
 
 .location-input {
-    /* width: 48;
-    height: 48; */
+    width: 70vw;  
     font-size: large;
+    max-width: 400px;
 }
 
 .header {
@@ -61,12 +61,23 @@ h1{
     flex-direction: row;
     flex: 5;
     gap: 1rem;
+    
 }
 
 .output-data > div {
     flex: 1;
+    border: 1px solid red;
+    display: grid;
+    place-content: center;
 }
 
 .output-data > .current-day {
     flex: 3;
+}
+
+@media screen and (max-width: 600px) {
+    .output-data {
+        flex-direction: column;
+        overflow-y: auto;
+    }
 }
