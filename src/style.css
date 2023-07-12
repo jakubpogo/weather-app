@@ -24,12 +24,12 @@ div {
 .logo {
     height: 85px;
     width: 80px;
-    
+
 }
 
 .location-input {
-    width: 48;
-    height: 48;
+    /* width: 48;
+    height: 48; */
     font-size: large;
 }
 
