@@ -1,3 +1,9 @@
+:root {
+    --theme-color: orange;
+    --gap-1: 1rem;
+    --gap-2: calc(var(--gap-1) * 2);
+}
+
 html, body {
     height: 100%;
     width: 100%;
@@ -48,19 +54,19 @@ h1{
     display: grid;
     place-content: center;
     flex: 1;
-    background: lightblue;
+    background: var(--theme-color);
 }
 
 .controls > div {
     display: flex;
-    gap: 1rem;
+    gap: var(--gap-1);
 }
 
 .output-data {
     display: flex;
     flex-direction: row;
     flex: 5;
-    gap: 1rem;
+    gap: var(--gap-1);
     
 }
 
@@ -69,6 +75,8 @@ h1{
     border: 1px solid red;
     display: grid;
     place-content: center;
+    min-height: 300px;
+    color: var(--theme-color);
 }
 
 .output-data > .current-day {
@@ -79,5 +87,9 @@ h1{
     .output-data {
         flex-direction: column;
         overflow-y: auto;
+    }
+    
+    .output-data:last-child {
+        margin-block-end: 44px;
     }
 }
