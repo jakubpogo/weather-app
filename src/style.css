@@ -1,4 +1,36 @@
-html {
+html, body {
     height: 100%;
     width: 100%;
-  }
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+div {
+    /* text-align: center;     */
+    border: 1px solid red;
+    flex: 1;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.logo {
+    height: 85px;
+    width: 80px;
+}
+
+.location-input {
+    width: 48;
+    height: 48;
+}
+
+.div1 {
+    display: flex;
+    
+}
