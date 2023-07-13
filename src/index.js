@@ -50,6 +50,9 @@ const weatherSymbols = {
     "122": "☁️",
 }
 
+const weathercodes = {
+    "116": "wi-day-cloudy",
+}
 function onDomContentLoaded() {
     console.log("DOM fully loaded and parsed");
     // fetches data extracts it and inserts it into the page

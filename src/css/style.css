@@ -1,5 +1,5 @@
 :root {
-    --theme-color: black;
+    --theme-color: #676c3b;
     --gap-1: 1rem;
     --gap-2: calc(var(--gap-1) * 2);
 }
@@ -31,6 +31,11 @@ h1 {
 .zeroSpacing {
     margin: 0;
     padding: 0;
+}
+
+.weatherfont {
+    font-size: 72px;
+    padding-top: 16px;
 }
 
 .grid-container {
@@ -72,8 +77,8 @@ h1 {
 }
 
 .logo {
-    height: 85px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
 
 }
 
@@ -109,14 +114,14 @@ h1 {
 .output-data {
     display: flex;
     flex-direction: row;
-    flex: 5;
+    flex: 7;
     gap: var(--gap-1);
 
 }
 
 .output-data>div {
     flex: 1;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: grid;
     place-content: center;
     /* min-height: 300px; */

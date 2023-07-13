@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href= "style.css" rel="stylesheet" type="text/css" />
+    <link href= "css/style.css" rel="stylesheet" type="text/css" />
+    <link href= "css/weather-icons.css" rel="stylesheet" type="text/css" />
     <title>weather-app</title>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
 
 <body>
     <div class="main-content">
-        <div class="header">
-            <img class="logo" src="images/logo.png">
-            <h1>weather-app</h1>
-        </div>
-        
-        
-        <div class="controls">
+         <div class="controls">
             <div>
+                <img class="logo" src="images/logo.png">
                 <input type= "text" id = "text" class="location-input" placeholder="Enter location here:" size="50"></input>
                 <button onclick=clicked()>ENTER</button>
                 
@@ -30,7 +26,7 @@
             <div class="current-day" id="cc">
                 <div class="grid-container">
                     <div class="grid-item">
-                        <img src="https://freesvg.org/img/sivvus_weather_symbols_3.png" class="img"></img>
+                        <i class="wi wi-day-cloudy weatherfont"></i>
                     </div>
                     <div class="grid-item">
                         <span>Partly cloudy</span><br/>
@@ -58,7 +54,7 @@
             </div>
 
             <div class="day-2">
-                content2
+                <i class="wi wi-day-sunny weatherfont"></i>
             </div>
 
             <div class="day-3">
