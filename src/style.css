@@ -4,7 +4,8 @@
     --gap-2: calc(var(--gap-1) * 2);
 }
 
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -15,13 +16,38 @@ html, body {
     box-sizing: border-box;
 }
 
-div, h1 {
+div,
+h1 {
     /* border: 1px solid rgb(64, 0, 0); */
 }
 
-h1{
+h1 {
     text-align: center;
     flex: 1;
+}
+
+.zeroSpacing {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    place-content: center;
+}
+
+.grid-item {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    padding: 16px;
+    font-size: 16px;
+
+}
+
+.img {
+    width: 200px;
+    height: 200px;
 }
 
 .main-content {
@@ -37,8 +63,12 @@ h1{
 
 }
 
+.dyn-txt {
+    font-size: 3vw;
+}
+
 .location-input {
-    width: 70vw;  
+    width: 70vw;
     font-size: large;
     max-width: 400px;
 }
@@ -57,7 +87,7 @@ h1{
     background: var(--theme-color);
 }
 
-.controls > div {
+.controls>div {
     display: flex;
     gap: var(--gap-1);
 }
@@ -67,20 +97,22 @@ h1{
     flex-direction: row;
     flex: 5;
     gap: var(--gap-1);
-    
+
 }
 
-.output-data > div {
+.output-data>div {
     flex: 1;
     border: 1px solid red;
     display: grid;
     place-content: center;
-    min-height: 300px;
+    /* min-height: 300px; */
     color: var(--theme-color);
 }
 
-.output-data > .current-day {
+.output-data>.current-day {
     flex: 3;
+    display: grid;
+
 }
 
 @media screen and (max-width: 600px) {
@@ -88,7 +120,7 @@ h1{
         flex-direction: column;
         overflow-y: auto;
     }
-    
+
     .output-data:last-child {
         margin-block-end: 44px;
     }
