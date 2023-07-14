@@ -47,8 +47,17 @@ h1 {
     display: grid;
     place-content: center;
     grid-template-columns: auto auto;
-    padding: 16px 64px;
-    width: 100%;
+    padding: 16px 16px;
+    /* width: 100%; */
+}
+
+.title {
+    font-size: 32px;
+    background-color: aliceblue;
+    padding: 16px 32px;
+    border-radius: 16px 16px 0px 0px;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .temper {
@@ -58,7 +67,7 @@ h1 {
 
 .grid-item {
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
-    padding: 16px;
+    padding: 8px;
     font-size: 16px;
 }
 
@@ -71,11 +80,11 @@ h1 {
     display: flex;
     flex-direction: column;
     height: 100%;
-    
+
     /* flex: 1; */
 }
 
-.main-content > div {
+.main-content>div {
     padding: var(--gap-2);
 }
 
@@ -106,14 +115,6 @@ h1 {
 
 }
 
-.title {
-    font-size: 32px;
-    background-color: aliceblue;
-    padding: 16px 32px;
-    border-radius: 16px 16px 0px 0px;
-    text-align: center;
-}
-
 .controls {
     display: grid;
     place-content: center;
@@ -122,7 +123,7 @@ h1 {
 }
 
 .controls>div {
-    display: flex;
+    /* display: flex; */
     gap: var(--gap-1);
 }
 
@@ -144,12 +145,6 @@ h1 {
     place-content: center;
     /* min-height: 300px; */
     color: var(--theme-color);
-    
-}
-
-.output-data>.current-day {
-    flex: 3;
-    display: grid;
 
 }
 
@@ -165,3 +160,53 @@ h1 {
     }
 }
 
+/* search box */
+
+.controls {
+    overflow: hidden;
+}
+
+.controls .search-container {
+    float: right;
+}
+
+.controls input[type=text] {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.controls .search-container button {
+    float: right;
+    padding: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.controls .search-container button:hover {
+    background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+    .controls .search-container {
+        float: none;
+    }
+
+    .controls input[type=text],
+    .controls .search-container button {
+        float: none;
+        text-align: left;
+        margin: 0;
+    }
+
+    .controls input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
