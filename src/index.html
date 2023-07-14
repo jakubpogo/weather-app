@@ -1,152 +1,168 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href= "css/style.css" rel="stylesheet" type="text/css" />
-    <link href= "css/weather-icons.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/weather-icons.css" rel="stylesheet" type="text/css" />
+    <link href="css/weather-icons-wind.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>weather-app</title>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
 
 <body>
     <div class="main-content">
-         <div class="controls">
+        <div class="controls">
             <div>
                 <img class="logo" src="images/logo.png">
-                <input type= "text" id = "text" class="location-input" placeholder="Enter location here:" size="50"></input>
-                <button onclick=clicked()>ENTER</button>
+                <input type="text" placeholder="Enter location here:" name="search">
+                 <button type="submit"><i class="fa fa-search"></i></button>
                 
+
             </div>
         </div>
-        
+
         <div class="output-data">
-            
-            <div class="current-day" id="cc">
+
+            <div class="current-day card-wrap" id="cc">
+                <div class="title">
+                    Today:
+                </div>
                 <div class="grid-container">
                     <div class="grid-item">
                         <i class="wi wi-day-cloudy weatherfont"></i>
                     </div>
                     <div class="grid-item">
-                        <span>Partly cloudy</span><br/>
-                        <span class="temper">18°C</span><br/>
+                        <span>Partly cloudy</span><br />
+                        <span class="temper"><i class="wi wi-thermometer"></i> 18°C</span><br />
                         <span>Feels like 18°C</span>
                     </div>
                     <div class="grid-item">
-                        <span>Wind SW</span><br>
-                        <span>20km/h</span><br>
-                    </div>  
-                    <div class="grid-item">
-                        <span>0.2 mm</span><br>
-                        <span>Humidity: 73%</span>
+                        <span><i class="wi wi-wind towards-sse winddirect"></i></span><br>
+                        <span> <i class="wi wi-small-craft-advisory"></i> 20km/h</span><br>
                     </div>
                     <div class="grid-item">
-                        <span>Pressure: 1016 hPa</span><br>
-                        <span>Visibility: 10 km</span> 
+                        <span><i class="wi wi-raindrop"></i> 0.2 mm</span><br>
+                        <span><i class="wi wi-humidity"></i> 73%</span>
+                    </div>
+                    <div class="grid-item">
+                        <span><i class="wi wi-barometer"></i> 1016 hPa</span><br>
+                        <span>Visibility: 10 km</span>
                     </div>
                     <div class="grid-item">
                         <span>Cloud cover: 50%</span> <br>
-                        <span>UV index: 4</span>  
+                        <span>UV index: 4</span>
                     </div>
-                     
-                  </div>
+
+                </div>
             </div>
 
-            <div class="day-2">
+            <div class="card-wrap">
+                <div class="title">
+                    Tomorrow:
+                </div>
                 <div class="grid-container">
                     <div class="grid-item">
                         <i class="wi wi-day-cloudy weatherfont"></i>
                     </div>
                     <div class="grid-item">
-                        <span>Partly cloudy</span><br/>
-                        <span class="temper">18°C</span><br/>
+                        <span>Partly cloudy</span><br />
+                        <span class="temper"><i class="wi wi-thermometer"></i> 18°C</span><br />
                         <span>Feels like 18°C</span>
                     </div>
                     <div class="grid-item">
-                        <span>Wind SW</span><br>
-                        <span>20km/h</span><br>
-                    </div>  
-                    <div class="grid-item">
-                        <span>0.2 mm</span><br>
-                        <span>Humidity: 73%</span>
+                        <span><i class="wi wi-direction-down-left winddirect"></i></span><br>
+                        <span> <i class="wi wi-small-craft-advisory"></i> 20km/h</span><br>
                     </div>
                     <div class="grid-item">
-                        <span>Pressure: 1016 hPa</span><br>
-                        <span>Visibility: 10 km</span> 
+                        <span><i class="wi wi-raindrop"></i> 0.2 mm</span><br>
+                        <span><i class="wi wi-humidity"></i> 73%</span>
+                    </div>
+                    <div class="grid-item">
+                        <span><i class="wi wi-barometer"></i> 1016 hPa</span><br>
+                        <span>Visibility: 10 km</span>
                     </div>
                     <div class="grid-item">
                         <span>Cloud cover: 50%</span> <br>
-                        <span>UV index: 4</span>  
+                        <span>UV index: 4</span>
                     </div>
-                     
-                  </div>
+
+                </div>
             </div>
 
-            <div class="day-3">
+            <div class="day-3 card-wrap">
+                <div class="title">
+                    Monday
+                </div>
                 <div class="grid-container">
                     <div class="grid-item">
                         <i class="wi wi-day-cloudy weatherfont"></i>
                     </div>
                     <div class="grid-item">
-                        <span>Partly cloudy</span><br/>
-                        <span class="temper">18°C</span><br/>
+                        <span>Partly cloudy</span><br />
+                        <span class="temper"><i class="wi wi-thermometer"></i> 18°C</span><br />
                         <span>Feels like 18°C</span>
                     </div>
                     <div class="grid-item">
-                        <span>Wind SW</span><br>
-                        <span>20km/h</span><br>
-                    </div>  
-                    <div class="grid-item">
-                        <span>0.2 mm</span><br>
-                        <span>Humidity: 73%</span>
+                        <span><i class="wi wi-direction-down-left winddirect"></i></span><br>
+                        <span> <i class="wi wi-small-craft-advisory"></i> 20km/h</span><br>
                     </div>
                     <div class="grid-item">
-                        <span>Pressure: 1016 hPa</span><br>
-                        <span>Visibility: 10 km</span> 
+                        <span><i class="wi wi-raindrop"></i> 0.2 mm</span><br>
+                        <span><i class="wi wi-humidity"></i> 73%</span>
+                    </div>
+                    <div class="grid-item">
+                        <span><i class="wi wi-barometer"></i> 1016 hPa</span><br>
+                        <span>Visibility: 10 km</span>
                     </div>
                     <div class="grid-item">
                         <span>Cloud cover: 50%</span> <br>
-                        <span>UV index: 4</span>  
+                        <span>UV index: 4</span>
                     </div>
-                     
-                  </div>
+
+                </div>
             </div>
 
-            <div class="day-4">
+            <div class="day-4 card-wrap">
+                <div class="title">
+                    Tuesday
+                </div>
                 <div class="grid-container">
                     <div class="grid-item">
                         <i class="wi wi-day-cloudy weatherfont"></i>
                     </div>
                     <div class="grid-item">
-                        <span>Partly cloudy</span><br/>
-                        <span class="temper">18°C</span><br/>
+                        <span>Partly cloudy</span><br />
+                        <span class="temper"><i class="wi wi-thermometer"></i> 18°C</span><br />
                         <span>Feels like 18°C</span>
                     </div>
                     <div class="grid-item">
-                        <span>Wind SW</span><br>
-                        <span>20km/h</span><br>
-                    </div>  
-                    <div class="grid-item">
-                        <span>0.2 mm</span><br>
-                        <span>Humidity: 73%</span>
+                        <span><i class="wi wi-direction-down-left winddirect"></i></span><br>
+                        <span> <i class="wi wi-small-craft-advisory"></i> 20km/h</span><br>
                     </div>
                     <div class="grid-item">
-                        <span>Pressure: 1016 hPa</span><br>
-                        <span>Visibility: 10 km</span> 
+                        <span><i class="wi wi-raindrop"></i> 0.2 mm</span><br>
+                        <span><i class="wi wi-humidity"></i> 73%</span>
+                    </div>
+                    <div class="grid-item">
+                        <span><i class="wi wi-barometer"></i> 1016 hPa</span><br>
+                        <span>Visibility: 10 km</span>
                     </div>
                     <div class="grid-item">
                         <span>Cloud cover: 50%</span> <br>
-                        <span>UV index: 4</span>  
+                        <span>UV index: 4</span>
                     </div>
-                     
-                  </div>
+
+                </div>
             </div>
 
 
         </div>
     </div>
-        
+
     <script src="index.js"></script>
 </body>
 

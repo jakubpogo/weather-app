@@ -51,6 +51,7 @@ const weatherSymbols = {
 }
 
 const weathercodes = {
+    "unknown": "wi-stars",
     "116": "wi-cloud",
     "143": "wi-fog",
     "248": "wi-fog",
