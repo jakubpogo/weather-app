@@ -38,13 +38,16 @@ h1 {
     padding-top: 16px;
 }
 
+.card-wrap {
+    border-radius: 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .grid-container {
     display: grid;
     place-content: center;
     grid-template-columns: auto auto;
-    border-radius: 5px 5px 0 0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    padding: 16px 64px;
     width: 100%;
 }
 
@@ -82,6 +85,10 @@ h1 {
 
 }
 
+.winddirect {
+    font-size: 32px;
+}
+
 .dyn-txt {
     font-size: 3vw;
 }
@@ -99,6 +106,14 @@ h1 {
 
 }
 
+.title {
+    font-size: 32px;
+    background-color: aliceblue;
+    padding: 16px 32px;
+    border-radius: 16px 16px 0px 0px;
+    text-align: center;
+}
+
 .controls {
     display: grid;
     place-content: center;
@@ -112,10 +127,13 @@ h1 {
 }
 
 .output-data {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    flex: 7;
+    flex: 7; */
+    display: grid;
+    grid-template-columns: auto auto;
     gap: var(--gap-1);
+    margin: 0px auto;
 
 }
 
@@ -126,6 +144,7 @@ h1 {
     place-content: center;
     /* min-height: 300px; */
     color: var(--theme-color);
+    
 }
 
 .output-data>.current-day {
@@ -136,6 +155,7 @@ h1 {
 
 @media screen and (max-width: 600px) {
     .output-data {
+        display: flex;
         flex-direction: column;
         overflow-y: auto;
     }
@@ -144,3 +164,4 @@ h1 {
         margin-block-end: 44px;
     }
 }
+
