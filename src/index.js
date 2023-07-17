@@ -1409,28 +1409,9 @@ function onDomContentLoaded() {
     console.log("DOM fully loaded and parsed");
     // fetches data extracts it and inserts it into the page
     
-   
-   
-   
     geoFindMe();
 }
 
-function fetchdata(location) {
-    getweatherdata(location).then(data => {
-        // const htmlstring = generateHTML(data)
-        // const el = document.querySelector("#cc");
-        //  el.innerHTML = htmlstring
-        const eData = extractdata(data);
-        const today = eData[0];
-        const morning = generateHTML(today[0]);
-        const afternoon = generateHTML(today[1])
-        const evening = generateHTML(today[2]);
-        const night = generateHTML(today[3]);
-        const allDayParts = [morning, afternoon,evening,night].join('');
-        const el = document.querySelector('#output-data');
-        el.innerHTML = allDayParts;
-    });
-}
 
 function geoFindMe() {
   
@@ -1438,8 +1419,20 @@ function geoFindMe() {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
         console.log("your position is: ",latitude, longitude);
-        getWeatherFromLocation(`${latitude},${longitude}`);
-      
+        getWeatherFromLocation(`${latitude},${longitude}`).then(data => {
+            // const htmlstring = generateHTML(data)
+            // const el = document.querySelector("#cc");
+            //  el.innerHTML = htmlstring
+            const eData = extractdata(data);
+            const today = eData[0];
+            const morning = generateHTML(today[0]);
+            const afternoon = generateHTML(today[1])
+            const evening = generateHTML(today[2]);
+            const night = generateHTML(today[3]);
+            const allDayParts = [morning, afternoon,evening,night].join('');
+            const el = document.querySelector('#output-data');
+            el.innerHTML = allDayParts;
+        });
     }
   
     function error() {
