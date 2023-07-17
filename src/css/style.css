@@ -163,7 +163,7 @@ h1 {
 /* search box */
 
 .controls {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .controls .search-container {
@@ -209,4 +209,13 @@ h1 {
     .controls input[type=text] {
         border: 1px solid #ccc;
     }
+}
+
+.status {
+    padding: 8px;
+    font-size: 16px;
+    color: white;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
 }
