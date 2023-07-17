@@ -1,7 +1,12 @@
 :root {
     --theme-color: #676c3b;
+    --text-color: #e7e1bf;
+    --secondary-color: #bca360;
+    --title-color: #f5f3df;
     --gap-1: 1rem;
     --gap-2: calc(var(--gap-1) * 2);
+    --font-size: 16px;
+    --font-size-title: calc(var(--font-size) * 2);
 }
 
 html,
@@ -10,7 +15,7 @@ body {
     width: 100%;
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
+    font-size: var(--font-size);
     line-height: 24px;
 }
 
@@ -41,6 +46,7 @@ h1 {
 .card-wrap {
     border-radius: 16px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--title-color);
 }
 
 .grid-container {
@@ -49,26 +55,30 @@ h1 {
     grid-template-columns: auto auto;
     padding: 16px 16px;
     /* width: 100%; */
+    background-color: var(--title-color);
 }
 
 .title {
-    font-size: 32px;
-    background-color: aliceblue;
+    font-size: var(--font-size-title);
+    background-color: var(--theme-color);
+    color: var(--title-color);
     padding: 16px 32px;
     border-radius: 16px 16px 0px 0px;
     text-align: center;
     box-sizing: border-box;
+    width: 45vw;
 }
 
 .temper {
-    font-size: 32px;
+    font-size: var(--font-size-title);
     line-height: 40px;
 }
 
 .grid-item {
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
     padding: 8px;
-    font-size: 16px;
+    font-size: var(--font-size);
+    background-color: var(--title-color);
 }
 
 .img {
@@ -95,7 +105,7 @@ h1 {
 }
 
 .winddirect {
-    font-size: 32px;
+    font-size: var(--font-size-title);
 }
 
 .dyn-txt {
@@ -130,7 +140,7 @@ div.controls {
 .search-input {
     flex: 1;
     width: 70vw;
-    font-size: large;
+    font-size: var(--font-size);
     max-width: 400px;
     padding-top: 8px;
     padding-bottom: 0;
@@ -143,7 +153,8 @@ div.controls {
     display: grid;
     grid-template-columns: auto auto;
     gap: var(--gap-1);
-    margin: 0px auto;
+    /* margin: 0px auto; */
+    background-color: var(--text-color);
 
 }
 
@@ -153,7 +164,7 @@ div.controls {
     display: grid;
     place-content: center;
     /* min-height: 300px; */
-    color: var(--theme-color);
+    color: var(--secondary-color);
 
 }
 
@@ -181,7 +192,7 @@ div.controls {
 
 .controls input[type=text] {
     padding: 8px;
-    font-size: 16px;
+    font-size: var(--font-size);
     border: none;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -194,7 +205,7 @@ div.controls {
     margin-bottom: 8px;
     margin-right: 16px;
     background: #ddd;
-    font-size: 16px;
+    font-size: var(--font-size);
     border: none;
     cursor: pointer;
 }
@@ -222,7 +233,7 @@ div.controls {
 
 .status {
     padding: 8px;
-    font-size: 16px;
-    color: white;
+    font-size: var(--font-size);
+    color: var(--title-color);
 
 }
