@@ -238,7 +238,7 @@ function generateHTML(daypart) {
 /**
  * This function will take the user's input and turn it into a variable that can be user by the cityData() function
  */
-function clicked() {
-    var locat = document.getElementById("text").value;
-
+function onLocationSearchClick() {
+    const locat = document.getElementById("location-text").value;
+    getWeatherFromLocation(locat).then(updateView);
 }
