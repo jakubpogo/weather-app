@@ -102,7 +102,10 @@ function onDomContentLoaded() {
     geoFindMe();
 }
 
-
+function updateStatus(message) {
+    const els = document.querySelector('#status');
+    els.innerHTML = message;
+}
 function geoFindMe() {
   
     function success(position) {
@@ -121,14 +124,14 @@ function geoFindMe() {
             const night = generateHTML(today[3]);
             const allDayParts = [morning, afternoon,evening,night].join('');
             const el = document.querySelector('#output-data');
-            const els = document.querySelector('#status');
             el.innerHTML = allDayParts;
-            els.innerHTML = `Displaying information for: ${area}`;
+            updateStatus(`Displaying information for: ${area}`);
         });
     }
   
     function error() {
       console.error("Unable to retrieve your location");
+      updateStatus(`Unable to retrieve your location`);
     }
   
     if (!navigator.geolocation) {
@@ -154,8 +157,8 @@ window.addEventListener("DOMContentLoaded", onDomContentLoaded);
  * @returns object weather data of the location. see example data.json
  */
 async function getWeatherFromLocation(location) {
-    const el = document.querySelector('#status');
-    el.innerHTML = `loading..`;
+
+    updateStatus(`loading..`);
     // fetches data from API
     try {
         const response = await fetch(`https://wttr.in/${location}?format=j1`);
@@ -168,8 +171,8 @@ async function getWeatherFromLocation(location) {
         return data;
     }
     catch (error) {
-        alert("There has been a problem with your fetch operation:", error);
-        el.innerHTML = `Error loading data`;
+        console.error("There has been a problem with your fetch operation:", error);
+        updateStatus(`Error loading data`);
     }
 }
 
