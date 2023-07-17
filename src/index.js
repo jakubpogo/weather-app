@@ -1,12 +1,12 @@
-function extractdata(sourcedata) {
-
-    const town = sourcedata.nearest_area[0].areaName[0].value;
-    const country = sourcedata.nearest_area[0].country[0].value;
+function extractData(sourceData) {
+    console.log("extracting data from", sourceData);
+    const town = sourceData.nearest_area[0].areaName[0].value;
+    const country = sourceData.nearest_area[0].country[0].value;
     const area = (`${town},${country}`);
-    
-    console.log(area);
-    const days = [...sourcedata.weather].map(day => {
-       
+
+    console.log("area", area);
+    const days = [...sourceData.weather].map(day => {
+
         const date = day.date;
         const dayParts = [day.hourly[2], day.hourly[4], day.hourly[6], day.hourly[0]];
         const outputParts = dayParts.map(part => {
@@ -18,7 +18,7 @@ function extractdata(sourcedata) {
             };
 
             return {
-                
+
                 cc: part.weatherDesc[0].value,
                 label: labels[part.time],
                 weatherCode: part.weatherCode,
@@ -35,13 +35,14 @@ function extractdata(sourcedata) {
                 uv: part.uvIndex,
             }
         });
-        console.log(date, outputParts);
+        console.log("date", date);
+        console.log("This is the extracted data", outputParts);
         return outputParts;
     });
     return {
         days, area
     };
-    
+
     // console.log(days);
 }
 
@@ -97,8 +98,6 @@ const weathercodes2icons = {
 
 function onDomContentLoaded() {
     console.log("DOM fully loaded and parsed");
-    // fetches data extracts it and inserts it into the page
-    
     geoFindMe();
 }
 
@@ -106,50 +105,48 @@ function updateStatus(message) {
     const els = document.querySelector('#status');
     els.innerHTML = message;
 }
+
+function updateView(data) {
+    const { days, area } = extractData(data);
+    const today = days[0];
+    const morning = generateHTML(today[0]);
+    const afternoon = generateHTML(today[1])
+    const evening = generateHTML(today[2]);
+    const night = generateHTML(today[3]);
+    const allDayParts = [morning, afternoon, evening, night].join('');
+    const el = document.querySelector('#output-data');
+    el.innerHTML = allDayParts;
+    updateStatus(`Displaying information for: ${area}`);
+}
+
 function geoFindMe() {
-  
+
     function success(position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-        console.log("your position is: ",latitude, longitude);
-        getWeatherFromLocation(`${latitude},${longitude}`).then(data => {
-            // const htmlstring = generateHTML(data)
-            // const el = document.querySelector("#cc");
-            //  el.innerHTML = htmlstring
-            const {days,area} = extractdata(data);
-            const today = days[0];
-            const morning = generateHTML(today[0]);
-            const afternoon = generateHTML(today[1])
-            const evening = generateHTML(today[2]);
-            const night = generateHTML(today[3]);
-            const allDayParts = [morning, afternoon,evening,night].join('');
-            const el = document.querySelector('#output-data');
-            el.innerHTML = allDayParts;
-            updateStatus(`Displaying information for: ${area}`);
-        });
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log("your position is: ", latitude, longitude);
+        getWeatherFromLocation(`${latitude},${longitude}`).then(updateView);
     }
-  
+
     function error() {
-      console.error("Unable to retrieve your location");
-      updateStatus(`Unable to retrieve your location`);
+        console.error("Unable to retrieve your location");
+        updateStatus(`Unable to retrieve your location`);
     }
-  
+
     if (!navigator.geolocation) {
-      console.error("Geolocation is not supported by your browser");
+        console.error("Geolocation is not supported by your browser");
     } else {
-      console.log("Locating…");
-      navigator.geolocation.getCurrentPosition(success, error);
+        updateStatus("Locating…");
+        navigator.geolocation.getCurrentPosition(success, error);
     }
-  }
-  
+}
+
 
 /**
  * The DOMContentLoaded event fires when the HTML document has been completely parsed
  * it creates a listener that listens for the DOMContentLoaded event, and starts the onDomContentLoaded function
  */
 window.addEventListener("DOMContentLoaded", onDomContentLoaded);
-
-
 
 /**
  * this is an asynchronous function that takes the parameter city and gets the data from the API and returns the data.
@@ -158,7 +155,7 @@ window.addEventListener("DOMContentLoaded", onDomContentLoaded);
  */
 async function getWeatherFromLocation(location) {
 
-    updateStatus(`loading..`);
+    updateStatus(`Loading..`);
     // fetches data from API
     try {
         const response = await fetch(`https://wttr.in/${location}?format=j1`);
@@ -167,7 +164,7 @@ async function getWeatherFromLocation(location) {
         // logging
         console.log(data.current_condition[0].weatherDesc[0].value);
         console.log(typeof data);
-       
+
         return data;
     }
     catch (error) {
@@ -238,14 +235,10 @@ function generateHTML(daypart) {
     `;
 }
 
-
-{/* <input type= "text" id = "text" class="location-input" placeholder="Enter location here:" size="50"></input>
-    <button onclick="clicked()">ENTER</button> */}
-
 /**
  * This function will take the user's input and turn it into a variable that can be user by the cityData() function
  */
-function clicked() {
-    var locat = document.getElementById("text").value;
-
+function onLocationSearchClick() {
+    const locat = document.getElementById("location-text").value;
+    getWeatherFromLocation(locat).then(updateView);
 }
