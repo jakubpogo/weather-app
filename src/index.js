@@ -1500,7 +1500,7 @@ function generateHTML(daypart) {
         </div>
         <div class="grid-container">
             <div class="grid-item">
-                <i class="wi ${weatherIcon}"></i>
+                <i class="wi ${weatherIcon} weatherfont"></i>
             </div>
             <div class="grid-item">
                 <span>${cc}</span><br />
