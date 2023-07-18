@@ -3,10 +3,12 @@
     --text-color: #e7e1bf;
     --secondary-color: #bca360;
     --title-color: #f5f3df;
+    --cardwrap-color: #f5f3df;
     --gap-1: 1rem;
     --gap-2: calc(var(--gap-1) * 2);
     --font-size: 16px;
     --font-size-title: calc(var(--font-size) * 2);
+    --transition-time: 2s;
 }
 
 html,
@@ -22,6 +24,7 @@ body {
 
 * {
     box-sizing: border-box;
+    /* filter: invert(); */
 }
 
 div,
@@ -47,18 +50,17 @@ h1 {
 .card-wrap {
     border-radius: 16px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: var(--title-color);
+    background-color: var(--cardwrap-color);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
 }
 
-.output-data.cards-visible > .card-wrap {
+.output-data.cards-visible>.card-wrap {
     max-height: 100%;
     overflow: visible;
     opacity: 1;
-    transition: opacity 2s;
-    /* transition-delay: 2s; */
+    transition: opacity var(--transition-time);
 }
 
 .grid-container {
@@ -88,7 +90,7 @@ h1 {
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
     padding: 8px;
     font-size: var(--font-size);
-    background-color: var(--title-color);
+    background-color: transparent;
 }
 
 .img {
@@ -162,13 +164,12 @@ div.controls {
     grid-template-columns: auto auto;
     gap: var(--gap-1);
     /* margin: 0px auto; */
-    background-color: var(--text-color);
     overflow-y: auto;
 }
 
 .output-data.data-present {
     flex: 10;
-    transition: 2s;
+    transition: var(--transition-time);
 }
 
 .output-data>div {
@@ -248,3 +249,21 @@ div.controls {
     color: var(--title-color);
 
 }
+
+@media (prefers-reduced-motion) {
+
+    /* styles to apply if a user's device settings are set to reduced motion */
+    :root {
+        --transition-time: 0s;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --theme-color: #4E406B;
+        --cardwrap-color: #0a0b20;
+        --text-color: #64629C;
+        --secondary-color: #6079BD;
+    }
+  }
+  
