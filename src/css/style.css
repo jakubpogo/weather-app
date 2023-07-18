@@ -54,8 +54,7 @@ h1 {
     place-content: center;
     grid-template-columns: auto auto;
     padding: 16px 16px;
-    /* width: 100%; */
-    background-color: var(--title-color);
+    background-color: transparent;
 }
 
 .title {
@@ -66,7 +65,6 @@ h1 {
     border-radius: 16px 16px 0px 0px;
     text-align: center;
     box-sizing: border-box;
-    width: 45vw;
 }
 
 .temper {
@@ -161,7 +159,6 @@ div.controls {
 .output-data>div {
     flex: 1;
     /* border: 1px solid red; */
-    display: grid;
     place-content: center;
     /* min-height: 300px; */
     color: var(--secondary-color);
