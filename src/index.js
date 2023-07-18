@@ -98,6 +98,10 @@ const weathercodes2icons = {
 
 function onDomContentLoaded() {
     console.log("DOM fully loaded and parsed");
+    const input = document.querySelector("#location-text");
+    if (input) {
+        input.addEventListener("keyup", keyboardHandler);
+    }
     geoFindMe();
 }
 
@@ -116,7 +120,13 @@ function updateView(data) {
     const allDayParts = [morning, afternoon, evening, night].join('');
     const el = document.querySelector('#output-data');
     el.innerHTML = allDayParts;
+    el.classList.add("data-present");
     updateStatus(`Displaying information for: ${area}`);
+
+    // Tell the CSS to make the content fade in after a couple of seconds
+    setTimeout(() => {
+        el.classList.add("cards-visible");
+    }, 1000);
 }
 
 function geoFindMe() {
@@ -159,6 +169,7 @@ async function getWeatherFromLocation(location) {
     // fetches data from API
     try {
         const response = await fetch(`https://wttr.in/${location}?format=j1`);
+        // const response = await fetch(`data.json`);
         // turning the response body text into JSON
         const data = await response.json();
         // logging
@@ -183,21 +194,6 @@ function generateHTML(daypart) {
     const {
         label, cc, weatherIcon, temperature, feelsLike, winddir, windspeed, rainfall, hum, press, vis, cloud, uv
     } = daypart;
-
-
-    // const cc = daypart.current_condition[0].weatherDesc[0].value;
-    // const weatherCode = daypart.current_condition[0].weatherCode;
-    // const weatherIcon = weathercodes2icons[weatherCode];
-    // const temperature = daypart.current_condition[0].temp_C;
-    // const feelsLike = daypart.current_condition[0].FeelsLikeC;
-    // const winddir = daypart.current_condition[0].winddir16Point;
-    // const windspeed = daypart.current_condition[0].windspeedKmph;
-    // const rainfall = daypart.current_condition[0].precipMM;
-    // const hum = daypart.current_condition[0].humidity;
-    // const press = daypart.current_condition[0].pressure;
-    // const vis = daypart.current_condition[0].visibility;
-    // const cloud = daypart.current_condition[0].cloudcover;
-    // const uv = daypart.current_condition[0].uvIndex;
 
     return `
     <div class="card-wrap">
@@ -241,4 +237,13 @@ function generateHTML(daypart) {
 function onLocationSearchClick() {
     const locat = document.getElementById("location-text").value;
     getWeatherFromLocation(locat).then(updateView);
+}
+
+/**
+ * Starts to search when enter key is pressed
+ */
+function keyboardHandler(e) {
+    if (e.key.toLowerCase() === "enter") {
+        onLocationSearchClick();
+    }
 }
