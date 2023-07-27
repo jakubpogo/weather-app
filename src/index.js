@@ -1,3 +1,13 @@
+/**
+ * The extractData function takes sourceData as input and processes it to extract relevant weather information for each day. 
+ * It retrieves the town and country from the input data, combines them into the area variable, and logs the extracted data. 
+ * It then iterates through the weather data for each day, mapping and transforming specific attributes to create an array 
+ * of objects (outputParts) containing weather details for different day parts (Morning, Day, Evening, and Night). 
+ * Finally, it returns an object with the days array containing weather information for all days and the area string 
+ * representing the location.
+ * @param {*} sourceData 
+ * @returns an object with two properties: days and area.
+ */
 function extractData(sourceData) {
     console.log("extracting data from", sourceData);
     const town = sourceData.nearest_area[0].areaName[0].value;
@@ -46,6 +56,9 @@ function extractData(sourceData) {
     // console.log(days);
 }
 
+/**
+ * This maps the weather codes to the icons, so the correct icon is fetched for each weather code.
+ */
 const weathercodes2icons = {
     "unknown": "wi-stars",
     "116": "wi-cloud",
@@ -96,6 +109,10 @@ const weathercodes2icons = {
     "122": "wi-cloudy",
 }
 
+/**
+ * The onDomContentLoaded function logs a message, adds a "keyup" event listener to an element with ID "location-text," 
+ * and calls the geoFindMe function.
+ */
 function onDomContentLoaded() {
     console.log("DOM fully loaded and parsed");
     const input = document.querySelector("#location-text");
@@ -105,11 +122,21 @@ function onDomContentLoaded() {
     geoFindMe();
 }
 
+/**
+ * The updateStatus function updates the content of the HTML element 
+ * with the ID "status" by setting it to the provided message.
+ * @param {*} message 
+ */
 function updateStatus(message) {
     const els = document.querySelector('#status');
     els.innerHTML = message;
 }
 
+/**
+ * The updateView function takes data as input, extracts information for the current day and area, 
+ * generates HTML content for different day parts, and displays it on the web page with a fade-in effect.
+ * @param {*} data 
+ */
 function updateView(data) {
     const { days, area } = extractData(data);
     const today = days[0];
@@ -129,6 +156,10 @@ function updateView(data) {
     }, 1000);
 }
 
+/**
+ * The geoFindMe function retrieves the user's geolocation coordinates and displays weather data for that location on the web page 
+ * using the updateView function. If geolocation is not supported, it shows an error message using updateStatus.
+ */
 function geoFindMe() {
 
     function success(position) {
