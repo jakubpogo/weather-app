@@ -1,9 +1,9 @@
 {
-    "name": "HackerWeb",
-    "short_name": "HackerWeb",
+    "name": "weather-app",
+    "short_name": "weather-app",
     "start_url": ".",
     "display": "standalone",
-    "description": "A readable Hacker News app.",
+    "description": "A weather app created using the wttr.in API",
     "icons": [
         {
             "src": "images/icon-192x192.png",
